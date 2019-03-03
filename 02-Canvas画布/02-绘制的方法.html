@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			
+			#box{
+			background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				// 边线样式
+				oGC.strokeStyle = 'blue'
+				
+				// 边线大小
+				oGC.lineWidth = 5
+				
+				// 边线连接点
+				oGC.lineJoin = 'bevel'
+				
+				// 绘制
+				oGC.strokeRect(30,30, 70, 50)
+//				oGC.strokeRect(100, 100, 100, 100)
+				
+				// 样式填充
+				oGC.fillStyle = 'red'
+				// 填充矩形
+				oGC.fillRect(100, 100, 50, 50)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300"></canvas>
+	</body>
+</html>

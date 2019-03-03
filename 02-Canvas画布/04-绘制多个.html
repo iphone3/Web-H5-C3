@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				// 填充三角形 -- 红色
+				oGC.beginPath()
+				oGC.fillStyle = 'red'
+				oGC.moveTo(30, 30)
+				oGC.lineTo(70, 70)
+				oGC.lineTo(40, 60)
+				oGC.fill()
+				oGC.closePath()
+			
+				// 填充矩形 -- 蓝色
+				oGC.beginPath()
+				oGC.fillStyle = 'blue'
+				oGC.fillRect(80, 80, 50, 50)
+				oGC.closePath()
+				
+				// 三角形 -- 紫色
+				oGC.beginPath()
+				oGC.strokeStyle = 'purple'
+				oGC.moveTo(80, 140)
+				oGC.lineTo(80, 170)
+				oGC.lineTo(140, 170)
+				oGC.lineTo(80, 140)
+				oGC.stroke()
+				oGC.closePath()
+				
+				// 填充三角形 -- 绿色
+				oGC.beginPath()
+				oGC.fillStyle = 'green'
+				oGC.moveTo(230, 230)
+				oGC.lineTo(280, 280)
+				oGC.lineTo(250, 270)
+				oGC.fill()
+				oGC.closePath()
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

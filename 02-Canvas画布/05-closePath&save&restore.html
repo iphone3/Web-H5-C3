@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+//				oGC.beginPath()
+//				oGC.moveTo(80, 80)
+//				oGC.lineTo(150, 150)
+//				oGC.lineTo(100, 180)
+////				oGC.lineTo(80, 80)
+//				oGC.stroke()
+//				oGC.closePath()
+				
+				
+//				oGC.beginPath()
+//				oGC.moveTo(80, 80)
+//				oGC.lineTo(150, 150)
+//				oGC.lineTo(100, 180)
+//				oGC.closePath()   // 闭合作用
+//				
+//				oGC.stroke()
+//				
+//				
+//				oGC.beginPath()
+//				oGC.moveTo(200, 200)
+//				oGC.lineTo(260, 260)
+//				oGC.lineTo(210, 250)
+//				oGC.lineTo(150, 270)
+//				oGC.closePath()
+//				
+//				oGC.stroke()
+
+
+			
+				// 保存 绘图状态 (无状态)
+				oGC.save()
+				oGC.fillStyle = 'blue'
+				
+				oGC.rotate(10*Math.PI/180) // 旋转
+				
+				oGC.fillRect(30, 30, 60, 60)
+				
+				// 恢复到上次保存的图片状态 
+				oGC.restore()   
+				
+				
+				
+				
+				oGC.save()
+				oGC.fillStyle = 'red'
+				oGC.rotate(20*Math.PI/180)
+				oGC.fillRect(100, 100, 50, 50)
+				oGC.restore()
+				
+				
+				
+				// 清除画布
+//				oGC.clearRect(100, 100, 100, 100)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

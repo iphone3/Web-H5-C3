@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				// 容器
+				var oBox = document.querySelector('#box')
+				
+				// 绘制环境(上下文) [在画布上绘图的方法和属性]
+				var oGC = oBox.getContext('2d')
+				
+				// 绘制矩形
+				oGC.strokeRect(50,50, 100, 100)
+				
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

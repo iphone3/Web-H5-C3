@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				draw1()
+				draw2()
+				
+				function draw2(){
+					// 起始点
+					oGC.moveTo(20, 240)
+					
+					// 新的目标点
+					oGC.lineTo(20, 280)
+					
+					// 新的目标点
+					oGC.lineTo(70, 280)
+					
+					// 设置填充颜色
+					oGC.fillStyle = 'red'
+					
+					oGC.fill()
+				}
+				
+				function draw1(){
+					// 起始
+					oGC.moveTo(50, 50)
+					
+					// 新的目标点
+					oGC.lineTo(200, 200)
+	
+					// 新的目标点
+					oGC.lineTo(200, 50)
+					
+					// 新的目标点
+					oGC.lineTo(50, 50)
+					
+					// 绘制
+					oGC.stroke()
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>
