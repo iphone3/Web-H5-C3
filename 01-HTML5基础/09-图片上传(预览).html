@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 300px;
+				height: 300px;
+				border: 1px solid gray;
+			}
+			
+			.show div{
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin: 5px;
+			}
+			.show img{
+				width: 100px;
+				height: 100px;
+			}
+			
+			.section{
+				
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('.box')
+				var oShow = document.querySelector('.show')
+				
+				oBox.ondragover = function(){
+					return false
+				}
+				
+				oBox.ondrop = function(ev){
+					this.style.borderColor = 'red'
+					
+					// 外部文件列表
+					ev = ev || window.event
+					
+					for (var i=0; i<ev.dataTransfer.files.length; i++) {
+						var readFile = new FileReader()
+						
+						readFile.readAsDataURL(ev.dataTransfer.files[i])
+						
+						// 从其他地方读取到浏览器
+						readFile.onload = function(){
+							var oView = document.createElement('div')
+							oShow.appendChild(oView)
+							
+							var oImg = document.createElement('img')
+							oImg.src = this.result
+							oView.appendChild(oImg)
+						}
+					}
+					
+					// 默认情况，拖拽进来的图片会被浏览器直接打开
+					return false
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="box">
+			<i>将图片拖拽到此处</i>
+		</div>
+		
+		<div class="show"></div>
+	</body>
+</html>

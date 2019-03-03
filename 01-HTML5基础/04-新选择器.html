@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新选择器</title>
+		<style type="text/css">
+			.view{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				// 1、getElementsByClassName
+//				var oView = document.getElementsByClassName('view')[1]
+//				oView.style.background = 'blue'
+				
+//				var oView = document.getElementsByClassName('view view3')[0]
+//				oView.style.background = 'blue'
+
+
+				// 2、querySelector
+//				var oView = document.querySelector('div')
+				var oView = document.querySelector('.view3')
+				oView.style.background = 'purple'
+				
+				var oP = document.querySelector('#title1')
+				oP.innerHTML = 'hello world!'
+				
+				var oSpan = document.querySelector('span.view')
+				oSpan.style.background = 'blue'
+				
+				// 通过 name属性 获取第一个input元素
+				var oInput = document.querySelector('input[name]')
+				oInput.value = '测试'
+				
+				// 第一个元素呢
+				document.querySelector("h3,h4").style.background = 'red'
+				
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="view view1"></div>
+		<br />
+		<div class="view view2"></div>
+		<br />
+		<div class="view view3"></div>
+		<br />
+		<div class="view view4"></div>
+		<p id="title1"></p>
+		
+		<span class="view">span</span>
+		<br />
+		
+		
+		<input type="radio" value="男" />男
+		<input type="radio" value="女" />女
+		<input type="text" name="username" id="" value="" />
+		
+		<h4>world</h4>
+		<h3>hello</h3>
+	</body>
+</html>

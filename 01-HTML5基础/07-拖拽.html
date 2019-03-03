@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.view{
+				width: 100px;
+				height: 100px;
+				background: red;
+				border-radius: 50%;
+			}
+			.box{
+				width: 300px;
+				height: 300px;
+				border: 1px solid gray;
+				margin: 100px;
+			}
+			.box i{
+				opacity: 0;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oView = document.querySelector('.view')
+				var oBox = document.querySelector('.box')
+				var oText = document.querySelector('.box i')
+				
+				
+				// 拖拽开始
+				oView.ondragstart = function(){
+					this.style.background = 'blue'
+					oText.style.opacity = 1
+				}
+				
+				// 开始和结束之间
+//				var i =0
+//				oView.ondrag = function(){
+//					oText.innerHTML = ++i
+//				}
+
+				oView.ondragend = function(){
+					this.style.background = 'red'
+					oText.style.opacity = 0
+				}
+				
+				
+				
+				oBox.ondragover = function(){
+					return false
+				}
+				
+				
+				oBox.ondragenter = function(){
+					this.style.background = 'gray'
+					oText.innerHTML = '放手'
+				}
+				
+				oBox.ondragleave = function(){
+					this.style.background = ''
+					oText.innerHTML = '将球拖拽到此处'
+				}
+				
+				oBox.ondrop = function(){
+					document.querySelector('p').innerHTML = '正在上传...'
+					this.style.background = ''
+					oText.innerHTML = '将球拖拽到此处'
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="view" draggable="true"></div>
+		
+		<div class="box">
+			<i>将球拖拽到此处</i>
+		</div>
+		<p></p>
+	</body>
+</html>

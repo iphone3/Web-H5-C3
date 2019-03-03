@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新选择器</title>
+		<style type="text/css">
+			.view{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oPs = document.querySelectorAll('p')
+				oPs[1].style.background = 'red'
+				
+				var oP = document.querySelectorAll('p.title')[0]
+				oP.style.background = 'red'
+				
+				var oViews = document.querySelectorAll('.view')
+				for(var i=0; i<oViews.length; i++){
+					oViews[i].style.background = 'blue'
+				}
+				
+				var oA = document.querySelectorAll('a[target]')[0]
+				oA.style.background = 'red'
+				
+				var oHs = document.querySelectorAll('h3,h4,h5,strong')
+				for (var i=0; i<oHs.length; i++) {
+					oHs[i].style.background = 'blue'
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="title">新选择器</div>
+		<p>hello</p>
+		<p>world</p>
+		<p>!</p>
+		<p> 你好 </p>
+		<p>querySelect</p>
+		<p class="title">querySelectAll</p>
+		
+		<div class="view view1"></div> <br />
+		<div class="view view1"></div> <br />
+		<div class="view view1"></div> <br />
+		
+		<a href="#"> 百度 </a><br />
+		<a href="#" target="_blank"> 谷歌 </a><br />
+		<a href="#"> 必应 </a><br />
+		
+		<h3> 测试1 </h3>
+		<h4> 测试2 </h4>
+		<h5> 测试3 </h5>
+		<strong>测试4</strong>
+	</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			.books{
+				width: 820px;
+				margin: 40px auto;
+				list-style: none;
+			}
+			
+			.books li{
+				border: 1px solid gray;
+				width: 190px;
+				height: 300px;
+				float: left;
+				margin: 5px;
+				text-align: center;
+			}
+			
+			.books li img{
+				width: 190px;
+				height: 240px;
+				border-bottom: 1px solid gray;
+			}
+			
+			.shops{
+				width: 250px;
+				border: 1px solid gray;
+				/*text-align: center;*/
+				position: fixed;
+				left: 0;
+				top: 0;
+			}
+			.shops h3{
+				height: 50px;
+				line-height: 50px;
+				background: gray;
+			}
+			.shops ul{
+				list-style: none;
+				display: none;
+			}
+			.shops li{
+				height: 100px;
+				line-height: 100px;
+				border: 1px solid white;
+				background: red;
+			}
+			.shops li i{
+				width: 20px;
+				float: left;
+			}
+			.shops li p{
+				width: 150px;
+				float: left;
+			}
+			.shops li img{
+				float: right;
+				width: 75px;
+				height: 100px;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var aLi = document.querySelectorAll('.books li')
+				var oShops = document.querySelector('.shops')
+				var oShopUl = document.querySelector('.shops ul')
+				
+				
+				oShops.onmouseover = function(){
+					oShopUl.style.display = 'block'
+				}
+				oShops.onmouseout = function(){
+					oShopUl.style.display = 'none'
+				}
+				
+				for (var i=0; i<aLi.length; i++) {
+					aLi[i].draggable = 'true'
+					aLi[i].index = i
+					
+					aLi[i].ondragstart = function(ev){
+						ev = ev || event
+						ev.dataTransfer.setData('index', this.index.toString())
+						
+						// 默认图片
+						ev.dataTransfer.setDragImage(this, ev.offsetX, ev.offsetY)
+					}
+				}
+				
+				
+				// 目标元素
+				oShops.ondragover = function(){
+					return false
+				}
+				
+				oShops.ondrop = function(ev){
+					ev = ev || window.event
+					
+					var index = parseInt(ev.dataTransfer.getData('index'))
+					
+					var content = aLi[index].querySelector('p').innerHTML
+					var imgSrc = aLi[index].querySelector('img').src
+					
+					
+					var oLi = document.createElement('li')
+					oShopUl.appendChild(oLi)
+					
+					var oI = document.createElement('i')
+					oI.innerHTML = oShopUl.querySelectorAll('li').length
+					oLi.appendChild(oI)
+					
+					var oP = document.createElement('p')
+					oP.innerHTML = content
+					oLi.appendChild(oP)
+					
+					var oImg = document.createElement('img')
+					oImg.src = imgSrc
+					oLi.appendChild(oImg)
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="shops">
+			<h3>购物车</h3>
+			
+			<ul>
+				<!--<li>
+					<i>1、</i>
+					<img src="img/img1.jpg" alt="" />
+					<p>
+						JavaScript语言精髓
+					</p>
+					<p>
+						￥99
+					</p>
+				</li>-->
+			</ul>
+		</div>
+		
+		<ul class="books">
+			<li>
+				<img src="img/img1.jpg" alt="" />
+				<p>
+					JavaScript语言精髓
+				</p>
+				<p>
+					￥99
+				</p>
+			</li>
+			
+			<li>
+				<img src="img/img1.jpg" alt="" />
+				<p>
+					JavaScript语言精髓
+				</p>
+				<span>￥99</span>
+			</li>
+			
+			<li>
+				<img src="img/img1.jpg" alt="" />
+				<p>
+					JavaScript语言精髓
+				</p>
+				<span>￥99</span>
+			</li>
+			
+			<li>
+				<img src="img/img1.jpg" alt="" />
+				<p>
+					JavaScript语言精髓
+				</p>
+				<span>￥99</span>
+			</li>
+		</ul>
+	</body>
+</html>

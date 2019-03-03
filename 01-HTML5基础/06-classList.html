@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>classList</title>
+		<style type="text/css">
+			.view{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.c_white{
+				color: white;
+			}
+			.section{
+				border: 5px solid blue;
+			}
+			.c_blue{
+				color: blue;
+			}
+			.purple {
+				background: purple;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+//				document.querySelector('.view').classList.add('c_white')
+				var oView = document.querySelector('.view')
+				
+				document.onclick = function(){
+//					document.querySelector('.view').classList.remove('section', 'c_blue')
+					
+//					document.querySelector('.view').classList.toggle('purple')
+					
+					
+//					document.querySelector('p').innerHTML = document.querySelector('div').classList
+//					document.querySelector('p').innerHTML = document.querySelector('div').classList.length
+//					document.querySelector('p').innerHTML = document.querySelector('div').classList[1]
+
+					if(oView.classList.contains('c_blue')){
+						oView.classList.remove('c_blue')
+					} else {
+						oView.classList.add('c_blue')
+					}
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="view section c_blue">
+			view
+		</div>
+		<p></p>
+	</body>
+</html>

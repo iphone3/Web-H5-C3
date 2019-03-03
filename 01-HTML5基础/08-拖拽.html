@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.view{
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background: red;
+				color: white;
+				margin: 5px;
+			}
+			
+			
+			.box{
+				width: 300px;
+				height: 300px;
+				border: 1px solid gray;
+				margin: 100px;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var aView = document.querySelectorAll('.view')
+				var oBox = document.querySelector('.box')
+				var oText = document.querySelector('.box i')
+				var oLogo = document.querySelector('.logo')
+				
+				for (var i=0; i<aView.length; i++) {
+					aView[i].draggable = 'true'
+					aView[i].index = i
+					
+					aView[i].ondragstart = function(ev){
+						ev = ev || event
+						
+						ev.dataTransfer.setData('index', this.index.toString())
+						ev.dataTransfer.setDragImage(oLogo, 20, 20)
+					}
+				}
+				
+				
+				oBox.ondragenter = function(){
+					this.style.background = 'gray'
+					oText.innerHTML = '放手'
+				}
+				
+				oBox.ondragover = function(ev){
+					ev = ev || event
+					return false
+				}
+				
+				oBox.ondrop = function(ev){
+					ev = ev || event
+					var index = parseInt(ev.dataTransfer.getData('index'))
+					this.appendChild(aView[index])
+					
+					this.style.background = ''
+					oText.innerHTML = '将文件拖拽到此处'
+				}
+				
+				oBox.ondragleave = function(){
+					this.style.background = ''
+					oText.innerHTML = '将文件拖拽到此处'
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<img src="img/pdf.gif" class="logo" />
+		<div class="view">view1</div>
+		<div class="view">view2</div>
+		<div class="view">view3</div>
+		<div class="view">view4</div>
+		<div class="view">view5</div>
+		
+		<div class="box">
+			<i>将文件拖拽到此处</i>
+		</div>
+	</body>
+</html>
