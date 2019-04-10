@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				list-style: none;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<ul>
+			<li><input type="checkbox" />1-往后余生</li>
+			<li><input type="checkbox" />2-往后余生</li>
+			<li><input type="checkbox" />3-往后余生</li>
+			<li><input type="checkbox" />4-往后余生</li>
+			<li><input type="checkbox" />5-往后余生</li>
+			<li><input type="checkbox" />6-往后余生</li>
+			<li><input type="checkbox" />7-往后余生</li>
+			<li><input type="checkbox" />8-往后余生</li>
+			<li><input type="checkbox" />9-往后余生</li>
+			<li><input type="checkbox" />10-往后余生</li>
+		</ul>
+		
+		<input type="button" id="bt" value="播放选中" />
+		
+		<script type="text/javascript">
+			var oBt = document.querySelector('#bt')
+			var openW = null 
+			var index = 0
+			
+			oBt.onclick = function(){
+				if (openW == null){
+					openW = window.open('02-test.html', '_blank')
+				} else {
+					index++
+					var oLi = document.createElement('li')
+					oLi.innerHTML = '第' + index + '次点击。'
+					openW.document.querySelector('ul').appendChild(oLi)
+				}
+			}
+		</script>
+	</body>
+</html>

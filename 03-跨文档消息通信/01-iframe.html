@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<input type="button" name="bt" id="bt" value="按钮" />
+		<br />
+		<iframe src="01-test.html" width="300" height="300"></iframe>
+		
+		<script type="text/javascript">
+			var oFrame = document.querySelector('iframe')
+			var oBt = document.querySelector('#bt')
+			
+			oBt.onclick = function(){
+				// oFrame.contentWindow >>> 子页面的window
+				oFrame.contentWindow.document.body.style.background = 'red'
+				
+				var oH = oFrame.contentWindow.document.querySelector('h1')
+				oH.style.color = 'white'
+			}
+			
+		</script>
+	</body>
+</html>
