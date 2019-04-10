@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				// 起点，结束点 (方向)
+//				var obj = oGC.createLinearGradient(0, 0, 300, 300)
+//				obj.addColorStop(0, 'purple')
+//				obj.addColorStop(0.2, 'gray')
+//				obj.addColorStop(0.5, 'yellow')
+//				obj.addColorStop(0.7, 'pink')
+//				obj.addColorStop(1, 'red')
+//				
+//				oGC.fillStyle = obj
+////				oGC.fillRect(0, 0, 300, 300)
+//				oGC.fillRect(20, 20, 100, 100)
+
+
+				var obj = oGC.createLinearGradient(100, 100, 170, 170)
+				obj.addColorStop(0, 'gray')
+				obj.addColorStop(0.5, 'white')
+			    obj.addColorStop(1, 'gray')
+			    
+			    oGC.fillStyle = obj
+			    	oGC.fillRect(30, 30, 200, 200)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

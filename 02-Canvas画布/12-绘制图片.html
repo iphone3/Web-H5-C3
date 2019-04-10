@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				var oBt = document.querySelector('#bt')
+				var num = 0
+				var oImg = new Image()
+				oImg.src = 'img/02-img.png'
+				
+				oImg.onload = function(){
+					oGC.drawImage(oImg, 100, 100, 70, 70)
+				}
+				
+				oBt.onclick = function(){
+					oGC.clearRect(0, 0, oBox.width, oBox.height)
+					oGC.save()
+					
+					// 中心点旋转
+					// 宽度/2
+					// 高度/2
+					oGC.translate(135, 135)
+					
+					num++
+					oGC.rotate(num*90*Math.PI/180)
+					
+					oGC.translate(-35, -35)
+					
+					oGC.drawImage(oImg, 0, 0, 70, 70)
+					
+					oGC.restore()
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<input type="button" name="bt" id="bt" value="旋转" />
+		<br />
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

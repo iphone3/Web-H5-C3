@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				
+				// 起始点
+				oGC.beginPath()
+				oGC.arc(116, 209, 4, 0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				// 控制点
+				oGC.beginPath()
+				oGC.arc(117, 348, 4, 0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				oGC.beginPath()
+				oGC.arc(368, 343, 4, 0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				// 结束点
+				oGC.beginPath()
+				oGC.arc(354, 474, 4, 0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				// 绘制
+				oGC.beginPath()
+				oGC.moveTo(116, 209)
+				// 第一组控制点、第二组控制点、第三组结束点
+				oGC.bezierCurveTo(117, 348, 368, 343, 354, 474)
+				oGC.strokeStyle = 'blue'
+				oGC.stroke()
+				oGC.closePath()
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="800" height="600">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

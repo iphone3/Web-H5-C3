@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				
+				
+				oGC.fillStyle = 'blue'
+				oGC.fillRect(0, 0, 100, 100)
+				
+				var oImg = oGC.createImageData(100, 100)
+				for (var i=0; i<oImg.width*oImg.height; i++) {
+					// 像素点: RGBA
+					// oImg.data[0]  oImg.data[1]  oImg.data[2] oImg.data[3] 
+					// oImg.data[4]  oImg.data[5]  oImg.data[6] oImg.data[7] 
+					
+					oImg.data[4*i] = 255
+					oImg.data[4*i+1] = 0
+					oImg.data[4*i+2] = 0
+					oImg.data[4*i+3] = 255
+				}
+				
+				oGC.putImageData(oImg, 180, 180)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

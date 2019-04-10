@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				var str = '天天向上'
+				
+				oGC.font = '30px impact'
+//				oGC.strokeStyle = 'red'
+				oGC.fillStyle = 'red'
+				oGC.textAlign = 'left'
+				oGC.textBaseline = 'middle'
+				
+				oGC.shadowColor = 'blue'
+				oGC.shadowOffsetX = 3
+				oGC.shadowOffsetY = 3
+				oGC.shadowBlur = 4
+				
+				// 文字高度: 字体大小
+				// 文字宽度?
+				var fontw = oGC.measureText(str).width
+				
+//				oGC.strokeText('好好学习', 0, 0)
+				oGC.fillText(str, (oBox.width - fontw)/2, (oBox.height - 30)/2)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

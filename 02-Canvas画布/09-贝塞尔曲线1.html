@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				// 起始点
+				oGC.beginPath()
+				oGC.arc(143, 33, 4,0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				// 控制点
+				oGC.beginPath()
+				oGC.arc(97, 252, 4,0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				// 结束点
+				oGC.beginPath()
+				oGC.arc(506, 270, 4,0, 2*Math.PI, false)
+				oGC.fill()
+				oGC.closePath()
+				
+				// 绘制
+				oGC.beginPath()
+				oGC.moveTo(143, 33)
+				oGC.quadraticCurveTo(97, 252, 506, 270)
+				oGC.stroke()
+				oGC.closePath()
+				
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="800" height="600">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

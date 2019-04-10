@@ -17,6 +17,20 @@
 				var oBox = document.querySelector('#box')
 				var oGC = oBox.getContext('2d')
 				
+				
+				oGC.arc(100, 100, 50, 0, 2*Math.PI, false)
+				oGC.fill()
+				
+				oBox.onmousedown = function(ev){
+					ev = ev || window.event
+					
+					var dowX = ev.offsetX
+					var dowY = ev.offsetY
+					
+					if(oGC.isPointInPath(dowX, dowY)){	// 事件处理
+						alert('我被点击了 T.T')
+					}
+				}
 			}
 		</script>
 	</head>

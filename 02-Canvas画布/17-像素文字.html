@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+			ul{
+				list-style: none;
+				color: white;
+				padding: 0;
+			}
+			li{
+				float: left;
+				width: 30px;
+				height: 30px;
+				border: 1px solid white;
+				margin: 3px;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				var aLi = document.querySelectorAll('li')
+				
+				// 字体大小
+				var fontH = 120
+				oGC.fillStyle = 'red'
+				oGC.textAlign = 'left'
+				oGC.textBaseline = 'top'
+				oGC.font = fontH + 'px 好'
+				
+				for (var i=0; i<aLi.length; i++) {
+					aLi[i].onclick = function(){
+						var str = this.innerHTML
+						
+						// 擦除
+						oGC.clearRect(0, 0, oBox.width, oBox.height)
+						
+						// 文字宽度
+						var fontW = oGC.measureText(str).width
+						
+						// 绘制
+						oGC.fillText(str, (oBox.width-fontW)/2, (oBox.height-fontH)/2)
+						
+						// 获取对应文本的像素点
+						var oImg = oGC.getImageData((oBox.width-fontW)/2, (oBox.height-fontH)/2, fontW, fontH)
+						
+						// 擦除
+						oGC.clearRect(0, 0, oBox.width, oBox.height)
+						
+						// 随机数(需要获取的像素点)
+						var dataArr = randomArr(oImg.width*oImg.height, oImg.width*oImg.height*0.2)
+						
+						// 新的像素
+						var newImg = oGC.createImageData(fontW, fontH)
+						
+						// 获取对应的像素点
+						for (var j=0; j<dataArr.length; j++) {
+							var temp = dataArr[j]
+							
+							newImg.data[4*temp] = oImg.data[4*temp]
+							newImg.data[4*temp+1] = oImg.data[4*temp+1]
+							newImg.data[4*temp+2] = oImg.data[4*temp+2]
+							newImg.data[4*temp+3] = oImg.data[4*temp+3]
+						}
+						
+						// 绘制
+						oGC.putImageData(newImg, (oBox.width-fontW)/2, (oBox.height-fontH)/2)
+					}
+				}
+				
+				// iAll最大值
+				// iNow获取几个
+				function randomArr(iAll, iNow){
+					var arr = []
+					var newArr = []
+					
+					for (var i=0; i<iAll; i++) {
+						arr.push(i)
+					}
+					
+					for (var j=0; j<iNow; j++) {
+						// 0~iAll
+						var temp = parseInt(Math.random() * iAll)
+						newArr.push(arr[temp])
+					}
+					
+					return newArr
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<ul>
+			<li>今</li>
+			<li>天</li>
+			<li>是</li>
+			<li>周</li>
+			<li>三</li>
+			<li>。</li>
+		</ul>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

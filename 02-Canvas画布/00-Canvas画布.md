@@ -103,6 +103,7 @@
 	oGC.bezierCurveTo(30, 140, 270, 180, 250, 250);
 	oGC.stroke();
     ```
+    > 动态绘制贝塞尔曲线的在线演示: http://myst729.github.io/bezier-curve/
     ![贝塞尔曲线1](http://upload-images.jianshu.io/upload_images/1801379-9bdb2ce92dc203db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
     ![贝塞尔曲线2](http://upload-images.jianshu.io/upload_images/1801379-a877a91ce0b82587.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				var ANGLE = Math.PI / 180
+				
+				
+				setInterval(function(){
+					draw()
+				}, 1000)
+				
+				function draw(){
+					var x = 150
+					var y = 150
+					var r = 100
+					
+					// 1小时 = 60分
+					// 1分钟 = 60秒
+					// 60 * 6度 = 360度
+					// 分 刻度
+					for (var i=0; i<60; i++) {
+						oGC.beginPath()
+						oGC.moveTo(x, y)
+						oGC.arc(x, y, r, i*6*ANGLE, (i+1)*6*ANGLE, false)
+						oGC.lineWidth = 2
+						oGC.strokeStyle = 'black'
+						oGC.stroke()
+						oGC.closePath()
+					}
+					// 擦除中间部分
+					oGC.beginPath()
+					oGC.arc(x, y, r-8, 0, 360*ANGLE, false)
+					oGC.fillStyle = 'white'
+					oGC.fill()
+					oGC.closePath()
+					
+					
+					// 12小时
+					// 12 * 30度 = 360度
+					// 时 刻度
+					for (var i=0; i<12; i++) {
+						oGC.beginPath()
+						oGC.moveTo(x, y)
+						oGC.arc(x, y, r, i*30*ANGLE, (i+1)*30*ANGLE, false)
+						oGC.stroke()
+						oGC.closePath()
+					}
+					oGC.beginPath()
+					oGC.arc(x, y, r-16, 0, 360*ANGLE, false)
+					oGC.fillStyle = 'white'
+					oGC.fill()
+					oGC.closePath()
+					
+					
+					
+					// 获取当前时间
+					var nowTime = new Date()
+					// 问题: 钟表起始点12点， 绘制起始点3点  【相差90度】
+//					var oH = (nowTime.getHours() * 30 - 90) * ANGLE
+					var oH = (nowTime.getHours() * 30 - 90 + nowTime.getMinutes()/2) * ANGLE
+					var oM = (nowTime.getMinutes() * 6 - 90) * ANGLE
+					var oS = (nowTime.getSeconds() * 6 - 90) * ANGLE
+					
+					// 时
+					oGC.beginPath()
+					oGC.moveTo(x, y)
+					oGC.arc(x, y, 60, oH, oH, false)
+					oGC.lineWidth = 5
+					oGC.strokeStyle = 'black'
+					oGC.stroke()
+					oGC.closePath()
+					
+					// 分
+					oGC.beginPath()
+					oGC.moveTo(x, y)
+					oGC.arc(x, y, 75, oM, oM, false)
+					oGC.lineWidth = 5
+					oGC.strokeStyle = 'black'
+					oGC.stroke()
+					oGC.closePath()
+					
+					// 秒
+					oGC.beginPath()
+					oGC.moveTo(x, y)
+					oGC.arc(x, y, 85, oS, oS, false)
+					oGC.lineWidth = 5
+					oGC.strokeStyle = 'red'
+					oGC.stroke()
+					oGC.closePath()
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

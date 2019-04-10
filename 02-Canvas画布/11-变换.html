@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+//				// 偏移
+//				oGC.translate(20, 20)
+//				
+//				// 旋转
+//				oGC.rotate(10*Math.PI/180)
+//				
+//				// 缩放
+//				oGC.scale(0.8, 1.3)
+//				
+//				oGC.fillRect(50, 50, 50, 50)
+
+
+				var rotateNum = 0
+				var scaleNum = 100
+				var scaleStep = 5
+				var timer = null
+				oGC.fillRect(100, 100, 100, 100)
+				
+				
+				oBox.onmouseover = function(){
+					timer = setInterval(function(){
+						// 擦除
+						oGC.clearRect(0, 0, oBox.width, oBox.height)
+						
+						// 保存绘画属性
+						oGC.save()
+						
+						// 先进行偏移处理
+						oGC.translate(150, 150)
+						
+						// 然后再进行旋转
+						// 旋转时，以画布左上角位置为圆心进行旋转
+						rotateNum += 4
+						oGC.rotate(rotateNum * Math.PI/180)
+						
+						// 缩放
+						if(scaleNum >= 250){
+							scaleStep = -5
+						} else if(scaleNum <= 0) {
+							scaleStep = 5
+						}
+						scaleNum += scaleStep
+						oGC.scale(scaleNum/150, scaleNum/150)
+						
+						// 设置回到中心点位置
+						oGC.translate(-50, -50)
+						
+						// 绘制
+						oGC.fillRect(0, 0, 100, 100)
+						
+						// 恢复上一次保存的
+						oGC.restore()
+					}, 100)
+				}
+				
+				oBox.onmouseout = function(){
+					clearInterval(timer)	
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

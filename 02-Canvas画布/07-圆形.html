@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+				width: 300px;
+				height: 300px;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+//				oGC.fillRect(50,50,50,50)
+
+				// arc(x,y,半径,起始弧度,结束弧度,旋转方向)
+				// 弧度: 角度 * Math.PI/180
+				// 旋转方向: false(默认)顺时针, true逆时针
+				
+//				oGC.arc(150,150,100,0,360*Math.PI/180, false)
+//				oGC.stroke()
+
+				
+				oGC.moveTo(150,150)
+				oGC.arc(150,150,100,0,90*Math.PI/180, false)
+				
+//				oGC.lineTo(150,150)
+				oGC.closePath()
+				
+				oGC.stroke()
+			}
+		</script>
+	</head>
+	
+	<body>
+		<!--
+			设置画布大小:300 * 300 [和style属性是不一样的]
+		-->
+		<!--
+			画布默认大小: 300*150 【图片大小300*150】
+			画布样式:300*300 【将300*150的图片，放置在300*300的盒子中显示，图片会被拉伸】
+		-->
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>

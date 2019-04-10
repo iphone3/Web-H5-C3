@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+			}
+			#box{
+				background: white;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.querySelector('#box')
+				var oGC = oBox.getContext('2d')
+				
+				// 起始点圆心位置+半径
+				// 结束点圆心位置+半径
+//				var obj = oGC.createRadialGradient(150, 150, 50, 150, 150, 100)
+//				var obj = oGC.createRadialGradient(150, 150, 50, 150, 150, 150)
+//				var obj = oGC.createRadialGradient(150, 150, 50, 150, 150, 200)
+
+				var obj = oGC.createRadialGradient(150, 150, 50, 180, 180, 150)
+
+				obj.addColorStop(0, 'red')
+				obj.addColorStop(0.5, 'gray')
+				obj.addColorStop(1, 'blue')
+				
+				oGC.fillStyle = obj
+				oGC.fillRect(0, 0, 300, 300)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="box" width="300" height="300">
+			<i>浏览器不支持canvas</i>
+		</canvas>
+	</body>
+</html>
