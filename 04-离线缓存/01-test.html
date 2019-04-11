@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html manifest="01-cache.mainfest">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				width: 300px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<img src="PoweredByMacOSX.gif"/>
+		
+		<script>
+		    if(window.applicationCache){
+		        alert("支持离线缓存");
+		    }
+		    else{
+		        alert("不支持离线缓存");
+		    }
+		</script>
+	</body>
+</html>
