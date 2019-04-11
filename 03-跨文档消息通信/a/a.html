@@ -7,5 +7,28 @@
 	<body>
 		
 		<h1>a页面</h1>
+		<input type="button" name="bt" id="bt" value="修改背景颜色(子页面)" />
+		<iframe src="http://www.b.com/b.html" width="" height=""></iframe>
+		
+		<script type="text/javascript">
+			var oBt = document.querySelector('#bt')
+			var oFrame = document.querySelector('iframe')
+			
+			oBt.onclick = function(){
+//				oFrame.contentWindow.document.body.style.background = 'purple'
+
+				oFrame.contentWindow.postMessage('changeColor', 'http://www.b.com')
+			}
+			
+			
+			window.addEventListener('message', function(ev){
+				ev = ev || window.event
+				
+				if(ev.data){
+					document.body.style.background = ev.data['changeBg']
+				}
+				
+			})
+		</script>
 	</body>
 </html>

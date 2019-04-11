@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<h1>a页面</h1>
+		<input type="button" name="bt1" id="bt1" value="修改背景颜色" />
+		<input type="button" name="bt2" id="bt2" value="打开新的窗口" />
+		
+		<script type="text/javascript">
+			var oBt1 = document.querySelector('#bt1')
+			var oBt2 = document.querySelector('#bt2')
+			var oFrame = document.querySelector('iframe')
+			var openW = null 
+			
+			oBt1.onclick = function(){
+				openW.postMessage({'changeBg':'blue'}, 'http://www.b.com')
+			}
+			
+			oBt2.onclick = function(){
+				openW = window.open('http://www.b.com/lisi.html', '_blank')
+			}
+			
+			window.addEventListener('message', function(ev){
+				ev = ev || window.event
+				
+				document.body.style.background = ev.data['changeColor']
+			})
+		</script>
+	</body>
+</html>

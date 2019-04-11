@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<h1>b页面</h1>
+		<input type="button" name="bt" id="bt" value="改变背景颜色" />
+		
+		
+		<script type="text/javascript">
+			window.addEventListener('message', function(ev){
+				ev = ev || window.event
+				
+				if(ev.origin == 'http://www.a.com'){
+					document.body.style.background = ev.data['changeBg']
+				}
+			})
+			
+			var oBt = document.querySelector('#bt')
+			oBt.onclick = function(){
+				window.opener.postMessage({'changeColor':'red'}, 
+				'*')
+			}
+		</script>
+	</body>
+</html>
