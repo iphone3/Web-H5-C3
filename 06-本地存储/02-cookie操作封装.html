@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<input type="text" placeholder="key" id="key" />
+		<br />
+		<input type="text" placeholder="value" id="value" />
+		<br />
+		<input type="button" name="bt1" id="bt1" value="存储" />
+		
+		<br />
+		<br />
+		<br />
+		<input type="text" placeholder="key" id="key2" />
+		<input type="button" name="bt2" id="bt2" value="获取" />
+		
+		<script type="text/javascript">
+			var oKey = document.querySelector('#key')
+			var oVal = document.querySelector('#value')
+			var oBt1 = document.querySelector('#bt1')
+			
+			var oBt2 = document.querySelector('#bt2')
+			var oKey2 = document.querySelector('#key2')
+			
+			oBt1.onclick = function(){
+				setCookie(oKey.value, oVal.value, 100)
+			}
+			
+			oBt2.onclick = function(){
+				value = getCookie(oKey2.value)
+				alert(value)
+			}
+			
+			// num 多少秒后过期
+			function setCookie(cname, cvalue, num){
+				var d = new Date()
+				d.setTime(d.getTime() + (num*1000))
+				var expires = 'expires=' + d.toGMTString()
+				
+				// cname=cvalue; 
+				document.cookie = cname + '=' + cvalue + '; ' + expires
+				console.log(document.cookie)
+			}
+			
+			function getCookie(cname){
+				console.log(cname)
+				// username=atom; password=123; age=18
+				var name = cname + '='
+				var ca = document.cookie.split(';')
+				for(var i=0; i<ca.length; i++){
+					// 去除前后的空格
+					var c = ca[i].trim()
+					
+					if(c.indexOf(name) == 0)
+						return c.substring(name.length, c.length)
+				}
+				
+				return ''
+			}
+		</script>
+	</body>
+</html>

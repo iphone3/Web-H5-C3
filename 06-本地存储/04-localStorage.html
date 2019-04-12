@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<input type="text" name="text" id="text" /><br />
+		<input type="button" name="bt1" id="bt1" value="添加" /><br />
+		<input type="button" name="bt2" id="bt2" value="获取" /><br />
+		<input type="button" name="bt3" id="bt3" value="删除" /><br />
+		<input type="button" name="bt4" id="bt4" value="清空" /><br />
+		
+		<script type="text/javascript">
+			var oText = document.querySelector('#text')
+			var oBt1 = document.querySelector('#bt1')
+			var oBt2 = document.querySelector('#bt2')
+			var oBt3 = document.querySelector('#bt3')
+			var oBt4 = document.querySelector('#bt4')
+			
+			oBt1.onclick = function(){
+				// key-value
+				window.localStorage.setItem('username', oText.value)
+				alert('添加成功')
+			}
+			
+			oBt2.onclick = function(){
+				alert(window.localStorage.getItem(oText.value))
+			}
+			
+			oBt3.onclick = function(){
+				window.localStorage.removeItem(oText.value)
+				alert('删除成功')
+			}
+			
+			oBt4.onclick = function(){
+				window.localStorage.clear()
+				alert('清空成功')
+			}
+		</script>
+	</body>
+</html>

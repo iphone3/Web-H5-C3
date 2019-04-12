@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>p
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		key: <input type="text" name="key" id="key" value="" /><br />
+		value: <input type="text" name="value" id="value" value="" /><br />
+		
+		<input type="button" id="bt1" value="存储" />
+		<input type="button"	 id="bt2" value="删除" />
+		
+		<script type="text/javascript">
+			var oBt1 = document.querySelector('#bt1')
+			var oBt2 = document.querySelector('#bt2')
+			var oKey = document.querySelector('#key')
+			var oVal = document.querySelector('#value')
+			
+			oBt1.onclick = function(){
+				window.localStorage.setItem(oKey.value, oVal.value)
+			}
+			
+			oBt2.onclick = function(){
+				window.localStorage.removeItem(oKey.value)
+			}
+			
+			window.addEventListener('storage', function(ev){
+				ev = ev || window.event
+				console.log('key:' + ev.key)
+				console.log('newValue:' + ev.newValue)
+				console.log('oldValue:' + ev.oldValue)
+				console.log('url:' + ev.url)
+			})
+		</script>
+	</body>
+</html>

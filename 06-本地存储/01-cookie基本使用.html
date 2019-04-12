@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<input type="button" name="bt1" id="bt1" value="设置cookie" />
+		<input type="button" name="bt2" id="bt2" value="修改cookie" />
+		<input type="button" name="bt3" id="bt3" value="删除cookie" />
+		<input type="button" name="bt4" id="bt4" value="获取cookie" />
+		
+		<script type="text/javascript">
+			var oBt1 = document.querySelector('#bt1')
+			var oBt2 = document.querySelector('#bt2')
+			var oBt3 = document.querySelector('#bt3')
+			var oBt4 = document.querySelector('#bt4')
+			
+			oBt1.onclick = function(){
+				// key=value
+				document.cookie = 'username=zyz'
+			}
+			
+			oBt2.onclick = function(){
+				document.cookie = 'username=atom'
+			}
+			
+			oBt3.onclick = function(){
+				document.cookie = 'username='
+			}
+			
+			oBt4.onclick = function(){
+				alert(document.cookie)
+			}
+		</script>
+	</body>
+</html>

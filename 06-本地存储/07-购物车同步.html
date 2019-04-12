@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<div id="box">
+			<input type="checkbox" value="iPhone1" />iPhone1 <br />
+			<input type="checkbox" value="iPhone2" />iPhone2 <br />
+			<input type="checkbox" value="iPhone3" />iPhone3 <br />
+			<input type="checkbox" value="iPhone4" />iPhone4 <br />
+			<input type="checkbox" value="iPhone5" />iPhone5 <br />
+			<input type="checkbox" value="iPhone6" />iPhone6 <br />
+			<input type="checkbox" value="iPhone7" />iPhone7 <br />
+			<input type="checkbox" value="iPhone8" />iPhone8 <br />
+		</div>
+		
+		<script type="text/javascript">
+			// 选中 》》 保存 》》 storage事件 》》 取出对应复选框+选中
+			var aInput = document.querySelectorAll('input')
+			for (var i=0; i<aInput.length; i++) {
+				aInput[i].onclick = function(){
+					// item: 'iPhone3:true'
+					// item: 'iPhone3:false'
+					window.localStorage.setItem('item', this.value + ':' + this.checked)
+				}
+			}
+			
+			window.addEventListener('storage', function(ev){
+				ev = ev || window.event
+				
+				// 'iPhone3:true'
+				var item = window.localStorage.getItem('item').split(':')[0]
+				var isSelect = window.localStorage.getItem('item').split(':')[1]
+				
+				// document.querySelector('input[value=iPhone3]')
+				var oInput = document.querySelector('input[value=' + item + ']')
+				oInput.checked = (isSelect=='true'?true:false)
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form method="post">
+			<p>
+				用户名: <input type="text" name="username" id="username" />
+			</p>
+			<p>
+				密码: <input type="password" name="password" id="password" value="" />
+			</p>
+			<p>
+				个人介绍: 
+				<textarea id="detail"  name="textarea" rows="" cols=""></textarea>
+			</p>
+			
+			<input type="button" id="sub" value="注册"/>
+		</form>
+		
+		<script type="text/javascript">
+			var oUsername = document.querySelector('#username')
+			var oPasswrod = document.querySelector('#password')
+			var oDetail = document.querySelector('#detail')
+			var oSubmit = document.querySelector('#sub')
+			
+			// 读取数据
+			var username = window.localStorage.getItem(oUsername.name)
+			if(username) oUsername.value = username
+			
+			var password = window.localStorage.getItem(oPasswrod.name)
+			if(password) oPasswrod.value = password
+			
+			var detail = window.localStorage.getItem(oDetail.name)
+			if(detail) oDetail.value = detail
+			
+			
+			// 窗口关闭事件
+			window.onunload = function(){	// 存储数据
+				if(oUsername.value){
+					window.localStorage.setItem(oUsername.name, oUsername.value)
+				}
+				
+				if(oPasswrod.value){
+					window.localStorage.setItem(oPasswrod.name, oPasswrod.value)
+				}
+				
+				if(oDetail.value){
+					window.localStorage.setItem(oDetail.name, oDetail.value)
+				}
+			}
+			
+			// 注册时，清空数据
+			oSubmit.onclick = function(){
+				window.localStorage.clear()
+				console.log(1)
+			}
+		</script>
+	</body>
+</html>
