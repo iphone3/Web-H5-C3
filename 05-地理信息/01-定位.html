@@ -11,8 +11,11 @@
 		
 		<script type="text/javascript">		
 			
+			// 注意地图的记录方式!!!
+			
 			var oBt = document.querySelector('#bt')
 			var oText = document.querySelector('p')
+			
 			oBt.onclick = function(){
 				if(navigator.geolocation){  
 				  navigator.geolocation.getCurrentPosition(showPosition,showError, {timeout: 10000, enableHighAccuracy: true})  
@@ -21,8 +24,9 @@
 				} 
 			}
 			
-			function showPosition(){
-				console.log(position.coords.latitude)
+			function showPosition(position){
+				console.log('经度:' + position.coords.longitude)
+				console.log('维度:' + position.coords.latitude)
 			}
 			
 			function showError(error){ 

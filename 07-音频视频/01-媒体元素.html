@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			audio{
+				width: 600px;
+				height: 40px;
+			}
+			
+			#box{
+				width: 400px;
+				height: 10px;
+				border: 1px solid gray;
+				position: relative;
+			}
+			#bg{
+				width: 400px;
+				height: 10px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 99;
+			}
+			#line{
+				width: 4px;
+				height: 24px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: -6px;
+			}
+			#progress{
+				width: 40px;
+				height: 10px;
+				background: gray;
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 0;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<audio src="source/105511007-1.mp3"></audio>
+		
+		<br />
+		<br />
+		<br />
+		<div id="box">
+			<div id="progress"></div>
+			<div id="bg"></div>
+			<i id="line"></i>
+		</div>
+		
+		<script type="text/javascript">
+			var oLine = document.querySelector('#line')
+			var oBox = document.querySelector('#box')
+			var oBg = document.querySelector('#bg')
+			var oProgress = document.querySelector('#progress')
+			var audio = document.querySelector('audio')
+			
+			var iScale = 0
+			oBg.onmousedown = function(ev){
+				ev = ev || window.event
+				
+				oBg.onmousemove = function(ev){
+					ev = ev || window.event
+					oLine.style.left = ev.offsetX + 'px'
+					oProgress.style.width = ev.offsetX + 'px'
+					
+					// 计算进度
+					iScale = oProgress.offsetWidth / oBg.offsetWidth
+					audio.pause()
+				}
+				
+				oBg.onmouseup = function(){
+					oBg.onmousemove = oBg.onmouseup = null
+					
+					audio.currentTime = parseInt(iScale * audio.duration)
+					audio.play()
+				}
+			}
+		</script>
+	</body>
+</html>

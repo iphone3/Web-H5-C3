@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 5000px;
+			}
+			video{
+				width: 320px;
+				height: 568px;
+				border: 1px solid gray;
+			}
+			
+			#box{
+				width: 568px;
+				height: 320px;
+				border: 1px solid gray;
+				margin: 0 30px;
+				position: fixed;
+				right: 30px;
+				bottom: 30px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<video src="source/Ezreal.mp4" controls="controls"></video>
+		
+		<div id="box" draggable="true">
+			<canvas id="c1" width="568" height="320"></canvas>
+		</div>
+		
+		<script type="text/javascript">
+			var video = document.querySelector('video')
+			var oC = document.querySelector('canvas')
+			var oGC = oC.getContext('2d')
+			
+			setInterval(function(){
+				oGC.drawImage(video, 0, 0, oC.width, oC.height)
+			}, 1000/24)
+		</script>
+	</body>
+</html>

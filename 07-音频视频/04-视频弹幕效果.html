@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.pickdiv{
+				width: 30px;
+				height: 30px;
+				display: inline-block;
+				border-radius: 50%;
+			}
+			.pickdiv span{
+				width: 20px;
+				height: 20px;
+				border: 2px solid white;
+				display: inline-block;
+				border-radius: 50%;
+				margin: 3px 0 0 3px;
+				display: none;
+			}
+			#purple{
+				background: purple;
+			}
+			#red{
+				background: red;
+			}
+			#pink{
+				background: pink;
+			}
+			#blue{
+				background: blue;
+			}
+			#green{
+				background: green;
+			}
+			
+			#barrageplayer{
+				position: relative;
+				display: block;
+				width: 900px;
+				height: 500px;
+			}
+			
+			#cv{
+				position: absolute;
+				z-index: 1;
+			}
+			video{
+				position: absolute;
+				z-index: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="barrageplayer">
+			<canvas id="cv" width="900" height="450"></canvas>
+			<video src="source/Ezreal.mp4" controls="controls"></video>
+		</div>
+		
+		<br />
+		
+		<div class="view">
+			<input type="text" name="smsg" id="smsg" placeholder="请输入弹幕内容" />
+			<button id="send">发送</button>
+		</div>
+		<br />
+		
+		<div id="colorpick">
+			<div class="pickdiv" id="purple"><span></span></div>
+			<div class="pickdiv" id="red"><span></span></div>
+			<div class="pickdiv" id="pink"><span></span></div>
+			<div class="pickdiv" id="blue"><span></span></div>
+			<div class="pickdiv" id="green"><span></span></div>
+		</div>
+		
+		<div id="speedpick">
+			<input type="radio" name="speed" value="1" />1x
+			<input type="radio" name="speed" value="2" />2x
+			<input type="radio" name="speed" value="3" />3x
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oC = document.querySelector('#cv')
+			var oColorpick = document.querySelector('#colorpick')
+			var speedDom = document.getElementsByName('speed')
+			var oContent = document.querySelector('#smsg')
+			var color = 'black'
+			var speed = 1
+			var msgs = []
+			
+			// 获取画布大小
+			var c_height = oC.height
+			var c_width = oC.width
+			
+			// 画布
+			ctx = oC.getContext('2d')
+			ctx.font = '25px hello'
+			
+			// 颜色处理
+			var temp = null 
+			oColorpick.addEventListener('click', function(ev){
+				ev = ev || window.event
+				
+				if(ev.target.tagName.toLowerCase() == 'div'){
+					color = ev.target.id
+				
+					if(temp){
+						// 先清除
+						var oSpan = temp.querySelector('span')
+						oSpan.style.display = 'none'
+					}
+					
+					// 再设置
+					temp = ev.target
+					var oSpan = temp.querySelector('span')
+					oSpan.style.display = 'block'
+				}
+			})
+			
+			// 发送弹幕
+			document.querySelector('#send').onclick = function(){
+				// 内容
+				var text = oContent.value
+				
+				// 速度
+				for (var i=0; i<speedDom.length; i++) {
+					if(speedDom[i].checked){
+						speed = parseInt(speedDom[i].value);
+						break;
+					}
+				}
+				
+				var temp = new Barrage(text, color, speed)
+				msgs.push(temp)
+			}
+			
+			// 弹幕对象
+			function Barrage(content, color, speed){
+				this.content = content
+				this.color = color
+				this.speed = speed
+				this.height = parseInt(Math.random()*c_height) + 10
+				
+				if(typeof this.move != 'function'){
+					Barrage.prototype.move = function(){
+						this.left = this.left - this.speed 
+					}
+				}
+			}
+			
+			// 绘制
+			setInterval(function(){
+				ctx.clearRect(0, 0, c_width, c_height)
+				ctx.save()
+				
+				for (var i=0; i<msgs.length; i++) {
+					if(msgs[i] != null){
+						// 弹幕显示
+						handle(msgs[i])
+					}
+				}
+			}, 20)
+			
+			
+			function handle(barrage){
+				console.log('绘制')
+				if(barrage.left == undefined || barrage.left == null){
+					barrage.left = oC.width
+				} else {
+					if(barrage.left < -200){
+						barrage = null 
+					} else {
+						barrage.move()
+						ctx.fillStyle = barrage.color 
+						ctx.fillText(barrage.content, barrage.left, barrage.height)
+						ctx.restore()
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
