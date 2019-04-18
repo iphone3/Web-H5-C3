@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Hello, World</title>
+		<style type="text/css">
+			html {
+				height: 100%
+			}
+			
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px
+			}
+			
+			#container {
+				height: 100%
+			}
+		</style>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xEUgZYCIAYxik4Z3EMsUa9Vgg5bEasLo">
+			//v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+		</script>
+	</head>
+
+	<body>
+		<input type="button" name="bt" id="bt" value="定位" />
+		<br />
+		<input type="text" name="text" id="text" placeholder="检索内容" />
+		<input type="button" name="search" id="search" value="检索" />
+		<br />
+		
+		<div id="container"></div>
+		
+		<script type="text/javascript">
+			var map = new BMap.Map("container");
+			// 创建地图实例  
+			var currentPoint = new BMap.Point(116.404, 39.915);
+			// 创建点坐标  
+			map.centerAndZoom(currentPoint, 15);
+			// 初始化地图，设置中心点坐标和地图级别
+			
+			
+			
+			// 定位
+			document.querySelector('#bt').onclick = function(){
+				var geolocation = new BMap.Geolocation();
+				
+				geolocation.getCurrentPosition(function(r){	
+					if(this.getStatus() == BMAP_STATUS_SUCCESS){ // 定位成功
+						// 当前位置
+						currentPoint = r.point
+						
+						// 创建一个标注
+						var mk = new BMap.Marker(r.point);
+						
+						// 将标注添加到地图中
+						map.addOverlay(mk);
+						
+						// 移动到对应标注的位置
+						map.centerAndZoom(r.point, 18)
+						
+						// 添加窗口信息
+						var opts = {    
+						    width : 200,     // 信息窗口宽度    
+						    height: 100,     // 信息窗口高度    
+						    title : "海底捞",  // 信息窗口标题 
+						    message: '晚上一起吃个饭吧？ 点击下面链接地址...'
+						}   
+						
+						var infoWindow = new BMap.InfoWindow("地址: 北京市东城区王府井大街88号", opts);  // 创建信息窗口对象    
+//						map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+						
+						map.addEventListener("click", function(){    
+						    map.openInfoWindow(infoWindow, r.point);      // 打开信息窗口    
+							}
+						);
+					}
+					else {	// 定位失败
+						alert('failed'+this.getStatus());
+					}        
+				});
+			}
+		
+			// 检索
+			document.querySelector('#search').onclick = function(){
+				var oText = document.querySelector('#text')
+				var local = new BMap.LocalSearch(map, { renderOptions:{map: map, autoViewport: true}});      
+				local.searchNearby(oText.value, currentPoint, 100000); 
+			}
+		</script>
+	</body>
+
+</html>
