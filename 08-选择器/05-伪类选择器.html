@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				color: white;
+				background: red;
+				display: none;
+			}
+			div a{
+				color: white;
+			}
+			
+			div:target{
+				display: block;
+			}
+			
+			
+			.text:disabled{
+				color: red;
+				border: red;
+			}
+			
+			.text:enabled{
+				color: blue;
+			}
+			input[type=checkbox]:checked{
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<a href="#view1">国内新闻</a>
+		<a href="#view2">体育新闻</a>
+		<a href="#view3">财经新闻</a>
+		
+		<div id="view1">
+			<ul>
+				<li><a href="1">1国内新闻</a></li>
+				<li><a href="2">2国内新闻</a></li>
+				<li><a href="3">3国内新闻</a></li>
+				<li><a href="4">4国内新闻</a></li>
+				<li><a href="5">5国内新闻</a></li>
+			</ul>
+		</div>
+		<div id="view2">
+			<ul>
+				<li><a href="1">1体育新闻</a></li>
+				<li><a href="2">2体育新闻</a></li>
+				<li><a href="3">3体育新闻</a></li>
+				<li><a href="4">4体育新闻</a></li>
+				<li><a href="5">5体育新闻</a></li>
+			</ul>
+		</div>
+		<div id="view3">
+			<ul>
+				<li><a href="1">1财经新闻</a></li>
+				<li><a href="2">2财经新闻</a></li>
+				<li><a href="3">3财经新闻</a></li>
+				<li><a href="4">4财经新闻</a></li>
+				<li><a href="5">5财经新闻</a></li>
+			</ul>
+		</div>
+		
+		
+		<br />
+		<br />
+		<br />
+		
+		<input type="text" name="text" class="text" value="添加账号" /> <br />
+		<input type="text" name="text" class="text" disabled="disabled" value="添加密码" />
+		<input type="checkbox" name="ch" value="" />可用
+		<input type="checkbox" name="ch" value="" />不可用
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			label{
+				margin: 0 5px;
+				float: left;
+				height: 20px;
+				line-height: 20px;
+				position: relative;
+				overflow: hidden;
+			}
+			label input{
+				position: absolute;
+				left: -20px;
+				top: -20px;
+			}
+			label span{
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				border: 1px solid gray;
+				float: left;
+				margin: 3px;
+			}
+			input:checked~span{
+				background: red;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<label>
+			<input type="checkbox" name="男" />男
+			<span></span>
+		</label>
+		
+		<label>
+			<input type="checkbox" name="女" />女
+			<span></span>
+		</label>
+		
+		<label>
+			<input type="checkbox" name="中性" />中性
+			<span></span>
+		</label>
+	</body>
+</html>

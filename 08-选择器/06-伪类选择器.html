@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*p{
+				width: 80px;
+			}
+			p:first-line{
+				color: blue;
+			}
+			p:first-letter{
+				font-size: 30px;
+			}
+			p::selection{
+				background: red;
+				color: white;
+			}
+			
+			p~h3{
+				color: red;
+			}
+			
+			p:after{
+				content: '呵呵';
+				background: pink;
+				color: white;
+			}
+			
+			p:before{
+				content: '测试添加内容';
+			}*/
+			
+			
+			/* .view 下的 所有p元素(子、孙...)*/
+			/*.view p{
+				background: red;
+			}*/
+			
+			/* 直接子代*/
+			.view > p{
+				background: red;
+				color: white;
+			}
+			
+			.view > p + a{
+				color: yellow;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<p>
+			哈哈，今天就是周四了，很开心。
+			呵呵.
+			洗洗.
+		</p>
+		
+		<h3>测试</h3>
+		
+		
+		<br />
+		<br />
+		<div class="view">
+			<p>CSS学习 -- 选择</p>
+			<i>测试</i>
+			<a href="#">跳转</a>
+		</div>
+		
+		<br />
+		<div class="view">
+			<p>HTML学习</p>
+			<a href="#">查看资料</a>
+			
+			<div class="test">
+				<p>试试看</p>
+			</div>
+		</div>
+	</body>
+</html>

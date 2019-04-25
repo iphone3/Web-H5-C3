@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*p:hover{
+				background: red;
+			}*/
+			
+			/* Element:nt-child(n)*/
+			/*p:nth-child(2){
+				background: red;
+			}*/
+			/*p:nth-child(2n){
+				background: purple;
+			}
+			p:nth-child(2n+1){
+				background: red;
+			}*/
+			
+			/* p的父元素div, 子元素第三个元素，并且是p*/
+			p:nth-child(3){
+				background: red;
+			}
+			
+			/* 先类型，后第几个*/
+			p:nth-of-type(3){
+				background: purple;
+			}
+			
+			p:nth-last-child(1){
+				background: green;
+			}
+			p:nth-last-of-type(2){
+				background: purple;
+			}
+			
+			
+			/* 等同于nth-child(1)*/
+			/*p:first-child{
+				color: red;
+			}*/
+			/* nth-of-type(1)*/
+			/*p:first-of-type{
+				background: goldenrod;
+			}*/
+			
+			/* nth-last-child(1)*/
+			p:last-child{
+				background: red;
+			}
+			p:last-of-type{
+				background: green;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="box">
+			<h3>测试</h3>
+			<p><a href="#">星期一</a></p>
+			<h2>测试</h2>
+			<p><a href="#">星期二</a></p>
+			<h4>测试</h4>
+			<p><a href="#">星期三</a></p>
+			<p><a href="#">星期四</a></p>
+			<p><a href="#">星期五</a></p>
+			<p><a href="#">星期六</a></p>
+			<p><a href="#">星期日</a></p>
+			<span>哈哈</span>
+		</div>
+	</body>
+</html>

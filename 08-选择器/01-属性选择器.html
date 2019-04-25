@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/* Element[attr]*/
+			p[title]{
+				background: red;
+			}
+			
+			/* Element[type='text']*/
+			p[title='css']{
+				color: white;
+			}
+			p[title=javascript]{
+				background: blue;
+				color: white;
+			}
+			
+			/* Element[attr~='value'] */
+			/* ~包含*/
+			p[title=html5]{
+				color: purple;
+				background: none;
+			}
+			p[title~=html5]{
+				color: pink;
+				background: none;
+			}
+			
+			/* Element[attr^='value'] */
+			/* ^ 以value开头 */
+			p[title^=css]{
+				background: none;
+				color: green;
+			}
+			
+			/* Element[attr$='value'] */
+			/* $ 以value结束*/
+			p[title$=he]{
+				color: yellow;
+				background: none;
+			}
+			
+			/* Element[attr*='value']*/
+			/* * 包含了value*/
+			p[title*=vue]{
+				color: red;
+				background: none;
+			}
+			
+			/* Element[attr|='value']*/
+			/* 并且属性值是value或者以“value-”开头的值*/
+			p[title|=vue]{
+				color: blueviolet;
+				background: none;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<p>HTML</p>
+		<p title="css"> CSS </p>
+		<p title="javascript">javascript</p>
+		<p title="html5">html5</p>
+		<p title="html5 haha hehe">HTML5</p>
+		<p title="hehe html5 haha">html测试</p>
+		<p title="css3">CSS3</p>
+		<p title="3css">测试1</p>
+		<p title="css1 css2 css3 haha hehe">测试2</p>
+		<p title="hehe css1 css2 css3 haha">测试3</p>
+		<p title="bootstrap">Bootstrap</p>
+		<p title="vue2 h">Vue2</p>
+		<p title="vue3 w">Vue3</p>
+		<p title="vue3">Vue4</p>
+		<p title="vue-1">测试1</p>
+		<p title="vue">测试2</p>
+		<p title="rect">Rect</p>
+	</body>
+</html>
