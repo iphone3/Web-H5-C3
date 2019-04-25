@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	width: 50%;
+	text-align: center;
+	color: white;
+	height: 50px;
+	line-height: 50px;
+	font-size: 30px;
+	float: left;
+}
+
+.view1 {
+	background: red;
+}
+
+.view2 {
+	background: blue;
+}
+
+.view3 {
+	background: black;
+}
+
+.view4 {
+	background: purple;
+}

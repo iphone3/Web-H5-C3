@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*当屏幕<620px时，即不显示; */
+			/*当屏幕>620px时，即显示; */
+			h1{
+				text-align: center;
+				line-height: 50px;
+			}
+			/* 宽度是父元素的 100%*/
+			#box{
+				height: 80px;
+				background: red;
+				color: white;
+			}
+			
+			p{
+				background: red;
+			}
+			
+			/* 媒体查询*/
+			/* 
+			 only: 特定媒体查询
+			 screen: 电脑屏幕、平板、手机..
+			 max-width: 屏幕最大宽度
+			 min-width: 屏幕最小宽度
+			 */
+			@media only screen and (max-width: 620px) {
+				h1{
+					display: none;
+				}	
+				#box{
+					background: blue;
+				}
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>响应式布局</h1>
+		<div id="box">盒子模型</div>
+		<p> hello </p>
+	</body>
+</html>
