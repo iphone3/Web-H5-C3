@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.view{
+				width: 130px;
+				height:80px;
+				background: red;
+				border-radius: 10px;
+				margin: 10px;
+				position: absolute;
+				left: 0;
+				
+				/* 过渡*/
+				/*transition: all 5s;*/
+				/*transition: width 3s, height 5s;*/
+				/*transition: all 5s ease-in;*/
+			}
+			/*.view:hover{
+				background: blue;
+				width: 200px;
+				height: 200px;
+			}*/
+			
+			#box{
+				width: 1200px;
+				border: 1px solid gray;
+				height: 700px;
+			}
+			#box:hover .view{
+				left: 1000px;
+			}
+			
+			/* 
+			   - ease: 逐渐变慢(默认值)
+			   - linear: 匀速
+			   - ease-in: 加速
+			   - ease-out: 减速
+			   - ease-in-out: 先加速后减速
+			 */
+			.view1{
+				top: 100px;
+				transition: all 5s ease;
+			}
+			.view2{
+				top: 200px;
+				transition: all 5s linear;
+			}
+			.view3{
+				top: 300px;
+				transition: all 5s ease-in;
+			}
+			.view4{
+				top: 400px;
+				transition: all 5s ease-out;
+			}
+			.view5{
+				top: 500px;
+				transition: all 5s ease-in-out;
+			}
+			
+			.view6{
+				top: 600px;
+				transition: all 5s cubic-bezier(.09,1.26,.83,-0.57);
+			}
+		</style>
+	</head>
+	
+	<body>
+		<!--<div class="view"></div>-->
+		
+		<div id="box">
+			
+			<div class="view view1">ease: 逐渐变慢</div>
+			<div class="view view2">linear:匀速</div>
+			<div class="view view3">ease-in: 加速</div>
+			<div class="view view4">ease-out: 减速</div>
+			<div class="view view5">ease-in-out: 先加速后减速</div>
+			<div class="view view6">定制贝塞尔曲线运动</div>
+		</div>
+	</body>
+</html>
