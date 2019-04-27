@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.view1{
+				width: 400px;
+				height: 200px;
+				border: 1px solid gray;
+				background: url(img/IMG.jpg) no-repeat;
+				background-size: 100% 100%;
+				font-size: 25px;
+				
+				-webkit-background-clip: text;
+				color: rgba(0,0,0,0);
+			}
+			
+			img{
+				width: 600px;
+				height: 360px;
+				border: 1px solid gray;
+				
+				-webkit-mask-image: url(img/test.png);
+				
+				transition: 10s;
+			}
+			img:hover{
+				-webkit-mask-position: 400px 200px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="view1">
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+			线性渐变，径向渐变...
+		</div>
+		
+		<br />
+		<img src="img/IMG.jpg" alt="" />
+	</body>
+</html>

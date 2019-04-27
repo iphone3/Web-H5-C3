@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.view1{
+				width: 300px;
+				height: 300px;
+				border: 1px solid gray;
+				/*background: url(img/qq.png) no-repeat center center;*/
+				
+				background: url(img/qq.png) no-repeat left top, url(img/ppt.png) no-repeat right top, url(img/rili.png) no-repeat left bottom, url(img/weixin.png) no-repeat right bottom, url(img/qq.png) no-repeat center center;
+				/*background-size: 100px 100px;*/
+				background-size: 30px 30px, 40px 40px, 50px 50px;
+			}
+			
+			.view2{
+				width: 100px;
+				height: 100px;
+				background: url(img/qq.png);
+				background-size: 100% 100%;
+			}
+			
+			.view3{
+				width: 100px;
+				height: 100px;
+				border: 1px solid gray;
+				padding: 20px;
+				background: url(img/qq.png) no-repeat;
+				background-size: 100% 100%;
+				
+				/*background-origin: padding-box;*/
+				background-origin: content-box;
+				/*background-origin: border-box;*/
+			}
+			
+			.view4{
+				width: 100px;
+				height: 100px;
+				border: 10px solid gray;
+				background: url(img/qq.png) no-repeat;
+				background-size: 100% 100%;
+				padding: 10px;
+				
+				background-origin: border-box;
+				background-clip: content-box;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="view1"></div>
+		<br />
+		<div class="view2"></div>
+		<br />
+		<div class="view3"></div>
+		<br />
+		<div class="view4"></div>
+	</body>
+</html>
