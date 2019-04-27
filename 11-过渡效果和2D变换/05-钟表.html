@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid gray;
+				border-radius: 50%;
+				margin: 50px auto;
+				position: relative;
+			}
+			
+			#box ul li{
+				list-style: none;
+				width: 1px;
+				height: 6px;
+				background: black;
+				position: absolute;
+				left: 100px;
+				top: 0;
+				
+				/* 旋转基点(圆心)*/
+				transform-origin: 0 100px;
+			}
+			/*#box ul li:nth-of-type(1){
+				transform: rotate(0deg);
+			}
+			#box ul li:nth-of-type(2){
+				transform: rotate(6deg);
+			}*/
+			
+			#box i{
+				transform-origin: 0 bottom;
+			}
+			.hou{
+				width: 7px;
+				height: 60px;
+				background: black;
+				position: absolute;
+				left: 97px;
+				top: 40px;
+			}
+			.min{
+				width: 4px;
+				height: 75px;
+				background: black;
+				position: absolute;
+				left: 98px;
+				top: 25px;
+			}
+			.sec{
+				width: 1px;
+				height: 90px;
+				background: black;
+				position: absolute;
+				left: 100px;
+				top: 10px;
+			}
+			span{
+				width: 20px;
+				height: 20px;
+				background: black;
+				position: absolute;
+				left: 90px;
+				top: 90px;
+				border-radius: 50%;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var oUl = document.querySelector('ul')
+				var oStyle = document.querySelector('style')
+				
+				// 绘制表盘
+				for (var i=0; i<60; i++) {
+					var oLi = document.createElement('li')
+					
+					if(i%5 == 0){
+						oLi.style.height = '12px'
+					}
+					
+					// 添加样式
+					oStyle.innerHTML += "#box ul li:nth-of-type("+ (i+1) + "){ transform: rotate(" + i*6 + "deg);}"
+					
+					oUl.appendChild(oLi)
+				}
+				
+				var oHou = document.querySelector('.hou')
+				var oMin = document.querySelector('.min')
+				var oSec = document.querySelector('.sec')
+				
+				setInterval(function(){
+					var nowTime = new Date() 
+					var iSec = nowTime.getSeconds() * 6
+					var iMin = nowTime.getMinutes() * 6 
+					
+					var iHou = nowTime.getHours() * 6 * 5 + iMin/60
+					
+					oSec.style.transform = 'rotate(' + iSec + 'deg)'
+					oMin.style.transform = 'rotate(' + iMin + 'deg)'
+					oHou.style.transform = 'rotate(' + iHou + 'deg)'
+				}, 1000)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div id="box">
+			<!-- 表盘-->
+			<ul>
+				<!--<li></li>
+				<li></li>-->
+			</ul>
+			
+			<!--时分秒针-->
+			<i class="hou"></i>
+			<i class="min"></i>
+			<i class="sec"></i>
+			
+			<!--圆心点-->
+			<span></span>
+		</div>
+	</body>
+</html>
